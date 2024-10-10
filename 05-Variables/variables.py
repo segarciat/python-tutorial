@@ -23,6 +23,14 @@ print(height)
 print(area)
 print(perimeter)
 
+# Perform the same (repetitive) computation to update area and parameter
+area = width * height
+perimeter = (width * 2) + (height * 2)
+
+# Display the updated values of area and perimeter
+print(area)
+print(perimeter)
+
 # Constants
 E = 2.71828
 GOLDEN_RATIO = 1.618

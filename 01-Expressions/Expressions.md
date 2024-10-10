@@ -3,7 +3,8 @@
 Python evaluates expressions to produce values. An **expression** may
 include *literals*, *variables*, *function calls*, *operators*, and more.
 Values may correspond to numbers, text, and collections of other values.
-An easy way to explore expressions and values in Python is through the REPL.
+An easy way to explore expressions and values in Python is through the REPL
+(Read-Evaluate-Print-Loop).
 
 Open your Terminal, and then run the `python` command from your shell
 to start up the REPL:

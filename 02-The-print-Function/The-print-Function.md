@@ -1,16 +1,29 @@
 # The `print()` Function
 
-In Python, a function represents logic with a well-defined interface and
-behavior and can be invoked multiple times. We will talk more about functions
-later, but of immediate interest is the *print* function.
+In the previous section, we saw that the REPL will evaluate expressions such
+as `3 + 14` and diplay the result. However, when we placed such as line in
+our script and ran it, we did not see any output. In this section, we will
+explore the built-in `print()` function, whose job is to output values of
+expressions.
+
+In Python, a *function* is a named operation a well-defined interface and
+behavior that can be invoked multiple times. A function may accept inputs
+and perform an operation that may display output.
+
+It is similar to an *operator* such as the addition operator `+`, which takes
+inputs and produces outputs. For example, in `3 + 14`, the inputs as
+`3` and `14`, and the output is `17`, the result of the operation.
+We will talk more about functions later, but of immediate interest is the
+*print* function.
 
 The purpose of the *print* function is to display textual output, normally to
-a terminal screen, but possibly to a file. Going forward, I will refer to
-functions using parentheses, such as `print()`, because parentheses are
-used to invoke functions. This also helps to distinguish them from variable
-names, which we will discuss later. `print()` is a built-in function, meaning
-that it is provided with Python. We will encounter many other such functions
-later, as well as other functions that are not built-in.
+a terminal screen, but possibly to a file. Going forward, I will add the
+parenthesis pair `()` as a suffix to functions, such as `print()`, because
+parentheses are used to *call* (to action) or *invoke* functions. This also
+helps to distinguish them from variable names, which we will discuss later.
+
+`print()` is a built-in function, meaning that it is provided with Python.
+We will encounter many other built-in and non built-in functions later.
 
 Create a Python script called `printing.py`:
 
@@ -48,27 +61,38 @@ False
 [5, 7, 0, -2, 23]
 ```
 
-The `print()` function has three components:
+Here, Python evaluated each expression inside the parentheses,
+passed the result to `print()`, and invoked `print()` to display
+the result.
+
+The function call `print(-52)` function has three components:
 
 - The name of the function, which is `print`.
 - A balanced set of parentheses `()`, which is used to signify that we
 are *calling* or *invoking* the *print* function. There must not be
 a space between the function name (`print`) and the parentheses `()`.
 That is, we should write `print()`,  not `print ()`.
-- An *argument* inside the parentheses. The argument is an expression.
-In the example above, we used many different expressions.
+- An *argument* inside the parentheses. The argument is an expression,
+and is what `print()` will display to the screen. In the example above,
+we used many different expressions. For example, `-52` is an argument.
 
 As you can see, the `print()` function in Python is similar to the `echo`
-command provided by your shell.
+command provided by your shell, but please note that `echo` is not
+directly accessible within a Python program, and `print()` is not
+directly accessible from the shell.
 
 Like many other functions, `print()` accepts more than one argument, or
-even no arguments at all! If given no argument, `print()` will output a blank
+even no arguments at all!
+If given no argument, `print()` will output a blank
 line. To give it more than one argument, separate each one by a comma. To try it,
 add the following lines to the end of `printing.py`:
 
 ```python
+# One argument: displays its value and ends with a newline
 print("Hello world!")
+# Displays no text and a newline
 print()
+# Displays Goodbye and world, separated by a single space, and a newline
 print("Goodbye", "world")
 ```
 

@@ -35,26 +35,35 @@ print(f"A rectangle of width {width} and height {height} has area {area}.")
 print(f"A rectangle of {width=} and {height=} has {area=}.")
 
 # String methods
-message = "   Hello, world    "
-print(message)
-print(message.lower())
-print(message.upper())
-print(message.title())
-print(message.capitalize())
+message = "hELLo wOrlD"
+print(f"original         : {message}")
+print(f"lower()          : {message.lower()}")
+print(f"upper()          : {message.upper()}")
+print(f"title()          : {message.title()}")
+print(f"capitalize()     : {message.capitalize()}")
 
-# Remove spaces at the end of the string
-print(message.rstrip())
-# Remove space at the beginning of the string
-print(message.lstrip())
-# Remove spaces on either side of the string (but not within the string)
-print(message.strip())
+# Strings are immutable, so message is unchanged by method calls.
+print(f"after methods    : {message}")
 
-HOME_PAGE = "https://www.linkedin.com/in/sergio-garcia-tapia/"
-print(HOME_PAGE.removeprefix("https://"))
+# We cannot modify the string, so we must create a new one and reassign.
+message = message.capitalize()
+print(f"after reassigning: {message}")
 
-# The string methods do not change the string because strings are "immutable".
-print(f"Values at the end: {message=}, and {HOME_PAGE=}")
+print()
 
-# The len() built-in function yields the number of characters in a string.
+message = "\t      I like pie!     \n "
+print(f"original: *{message}*")
+# Remove leading spaces
+print(f"lstrip(): *{message.lstrip()}*")
+# Remove trailing spaces
+print(f"rstrip(): *{message.rstrip()}*")
+# Remove both leading and trailing spaces 
+print(f"strip() : *{message.strip()}*")
+print(f"after   : *{message}*")
+
+# How many characters in the string, including spaces and escape sequences
 print(f"The string {message=} has {len(message)} characters")
-print(f"The string {HOME_PAGE=} has {len(HOME_PAGE)} characters")
+# Removing spaces
+print(f"After removing spaces, it has {len(message.strip())} characters")
+
+

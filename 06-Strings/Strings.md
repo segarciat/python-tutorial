@@ -218,63 +218,133 @@ is the first character in the string. If the first character is not a letter,
 does nothing. Capitalize only the first character in `s` (and only if its a letter).
 - `s.title()`: Produce a string for which all letters are in lowercase, except
 the first letter of each "word". Here, "words" are separated by whitespaces.
-- `s.lstrip()`: Produce a string with the initial whitespace characters removed.
-- `s.rstrip()`: Produce a string with the ending whitespace characters removed.
-- `s.strip()`: Same as applying both `lstrip()` and `rstrip()`. Notice that
 spaces within the string, not at the end or at the beginning, are preserved.
 - `s.removeprefix(my_prefix)`: Produce a string equivalent to the first, except
 that if the sequence of characters given by `my_prefix` exists at the beginning
 of `s`, then they are not in the resulting string.
 
-Note that I was careful to say "produce a string..." rather than "change the string".
-In Python, strings are **immutable**, meaning that they never change. So if
-`s` is a variable (label) for the string `"Hello"`, then that string `"Hello"` will
-never change, even if you call methods on it. Notice that `s` may be reassigned to
-refer to a different string, which is allowed.
+Add the following to your script to see these methods in action:
+
+```python
+message = "hELLo wOrlD"
+print(f"original    : {message}")
+print(f"lower()     : {message.lower()}")
+print(f"upper()     : {message.upper()}")
+print(f"title()     : {message.title()}")
+print(f"capitalize(): {message.capitalize()}")
+```
+
+You will observe the following output:
+
+```text
+original         : hELLo wOrlD
+lower()          : hello world
+upper()          : HELLO WORLD
+title()          : Hello World
+capitalize()     : Hello world
+```
+
+## Strings and Immutability
+
+Note that I was careful to say "produce a string..." rather than "change the string"
+when describing string methods. In Python, strings are **immutable**, meaning that
+they never change. So if `s` is a variable (label) for the string `"Hello"`, then
+that string `"Hello"` will never change, even if you call methods on it. Notice that
+`s` may be reassigned to refer to a different string, which is allowed.
+
+To see this, display the value of the `message` variable we created earlier,
+and note that it will have the original value:
+
+```python
+print(f"after methods    : {message}")
+```
+
+Altogether, you should see:
+
+```text
+original         : hELLo wOrlD
+lower()          : hello world
+upper()          : HELLO WORLD
+title()          : Hello World
+capitalize()     : Hello world
+after methods    : hELLo wOrlD
+```
+
+This is important to remember because you may in fact wish to
+update the variable. To do so, we must reassign the variable
+with the `=` operator. Add the following to your script:
+
+```python
+message = message.capitalize()
+print(f"after reassigning: {message}")
+```
+
+This calls the `capitalize()` method to produce a string, and
+it replaces the old value in `message` with the result of
+`message.capitalize()`. You should see the following output:
+
+```text
+original         : hELLo wOrlD
+lower()          : hello world
+upper()          : HELLO WORLD
+title()          : Hello World
+capitalize()     : Hello world
+after methods    : hELLo wOrlD
+after reassigning: Hello world
+```
+
+## Strings and Spaces
+
+As we have seen, there are many different ways to represent spaces in strings
+in Python. Among them:
+
+- A single space: ` `.
+- A table character with the escape sequence `\t`.
+- A newline character with the escape sequence `\n`.
+
+Many functions ignore spaces, and sometimes we would like to eliminate them
+when processing data. Strings provide some methods to help:
+
+- `s.lstrip()`: Produce a string with the initial whitespace characters removed.
+- `s.rstrip()`: Produce a string with the ending whitespace characters removed.
+- `s.strip()`: Same as applying both `lstrip()` and `rstrip()`.
 
 Add the following to your script:
 
 ```python
-message = "   Hello, world    "
-print(message)
-print(message.lower())
-print(message.upper())
-print(message.title())
+print()
 
-print(message.rstrip())
-print(message.lstrip())
-print(message.strip())
-
-HOME_PAGE = "https://www.linkedin.com/in/sergio-garcia-tapia/"
-print(HOME_PAGE.removeprefix("https://"))
+message = "\t      I like pie!     \n "
+print(f"original: *{message}*")
+# Remove leading spaces
+print(f"lstrip(): *{message.lstrip()}*")
+# Remove trailing spaces
+print(f"rstrip(): *{message.rstrip()}*")
+# Remove both leading and trailing spaces 
+print(f"strip() : *{message.strip()}*")
+print(f"after   : *{message}*")
 ```
 
-You should see:
+Notice the  `*` within the format string passed to `print()`.
+This is so that we can more easily see where the string starts
+and where it ends. Your output will look as follows:
 
 ```text
-   Hello, world    
-   hello, world    
-   HELLO, WORLD    
-   Hello, World    
-   Hello, world
-Hello, world    
-Hello, world
-www.linkedin.com/in/sergio-garcia-tapia/
+original: *           I like pie!     
+ *
+lstrip(): *I like pie!     
+ *
+rstrip(): *           I like pie!*
+strip() : *I like pie!*
+after   : *           I like pie!
+ *
 ```
 
-Since strings are immutable, and `message` and `HOME_PAGE` were never
-reassigned, we can show that they still hold their original value.
-Add the following line:
-
-```python
-print(f"Values at the end: {message=}, and {HOME_PAGE=}")
-```
-
-You should see:
-
-```text
-Values at the end: message='   Hello, world    ', and home_page='https://www.linkedin.com/in/sergio-garcia-tapia/'
-```
+As before, note that `message` is not changed because we did
+not reassign it, a consequence of string immutability. Notice
+that the `rstrip()` and `strip()` call removed both the single
+blanks and the `\n`, so the ending `*` character prints on the same
+line for `rstrip()` and `strip()`.
 
 ## The `len()` built-in function
 
@@ -285,6 +355,18 @@ to strings is the `len()` built-in function. When applied on a string
 Add the following to your script:
 
 ```python
+# How many characters in the string, including spaces and escape sequences
 print(f"The string {message=} has {len(message)} characters")
-print(f"The string {HOME_PAGE=} has {len(HOME_PAGE)} characters")
+# Removing spaces
+print(f"After removing spaces, it has {len(message.strip())} characters")
 ```
+
+You will see:
+
+```text
+The string message='\t      I like pie!     \n ' has 25 characters
+After removing spaces, it has 11 characters
+```
+
+Notice that a escape sequence such as `\n` and `\t` counts as a single
+character, not two, and each blank counts as a character.

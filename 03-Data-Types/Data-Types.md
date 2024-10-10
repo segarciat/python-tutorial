@@ -1,14 +1,13 @@
 # Data Types
 
-Armed with `print()`, we can explore what Python has to offer.
-Before we do that, we briefly mention data types. In Python, expressions
-have a **data type**, which determines what operations are allowed on the
-corresponding values, and what they do. For example, Python distinguishes
-between integers, fractions, complex numbers, text, lists of items, and more.
+Equipped with `print()`, we can visually explore what Python has to offer.
+Before we do that, let's briefly talk about data types. In Python, expressions
+have a **data type** or **class**, which determines what operations are allowed
+involving their values. For example, Python distinguishes between integers, fractions,
+complex numbers, text, lists of items, and more. We will explore these all in due time.
 
-A useful Python built-in function to explore this is the `type()` function.
-The `type()` function accepts an expression as its argument, and it
-displays the type (its "class").
+Python provides the built-in function, `type()` which accepts an expression
+as its argument displays its 'class', which is its data type.
 
 Create a script called `data_types.py`:
 

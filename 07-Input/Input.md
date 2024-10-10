@@ -15,7 +15,7 @@ known as a *prompt*.
 `ENTER` (or `RETURN`) key on their keyboard, signifying that they
 are done providing input.
 - The `input()` function produces the text that the user typed
-as its (string) value.
+as its (string) value. The result is always of type `str`.
 
 Create a Python script called `getting_input.py`:
 
@@ -58,8 +58,8 @@ print(f"The type of {my_pi=} is {type(my_pi)}")
 
 The `int()` built-in function accepts (among other things) a `str` object
 (a string) as an argument, and produces an integer (an `int`). Similarly,
-`float()` may convert a `str` to a `float`. Notice that if the argument
-we provide is not a string, the program will terminate with an error
+`float()` may convert a `str` to a `float`. Notice that if the string
+we provide is not a number, the program will terminate with an error
 (known as an exception in Python). We will learn how to handle this
 in the future.
 
@@ -94,5 +94,30 @@ This might be by mistake or on purpose. For example, the user might
 enter `4.0`, which our program cannot handle with `int()` (it would
 need `float()`).
 
-In general, you should never trust your user's input, and you should
-code defensively. We will learn ways to do this as we move along.
+Notice that we have two variables, `m_input` and `m`. The difference
+is that `m_input` is the string provided by the user, which has type
+`str`, and `m` is the `int` value we got from *parsing* `m_input`
+with the `int()` function. Had we passed `m_input` and `n_input`
+directly to `math.gcd()`, our program would error out.
+
+There are ways to re-write the program to eliminate the `m_input`
+variable, such as by *nesting* the `int()` and `input()` function calls
+as follows:
+
+```python
+m = int(input("Enter a positive integer: "))
+```
+
+In this case, the output of `input()`, which is a string, is immediately
+passed as an input argument to `int()`. Therefore, if the user entered
+a valid integer, there will not be an error, and `m` will be an `int`
+representing the number the user entered. This option might seem
+appealing, but you cautioned against it.
+
+In general, you should never trust your user's input, because your user
+may make a mistake, or they may maliciously enter an invalid value.
+For example, your user may enter `3.0` thinking that is valid, which
+would fail for `int()` (though not for `float()`). Though it's impossible
+to anticipate everything the user will do, we will learn ways to
+make our programs robust, to limit the ways that it terminates in errors
+that the user cannot understand.
