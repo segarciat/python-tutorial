@@ -211,4 +211,103 @@ print(0 not in tuple_of_coordinates)
 print("sergio" in dictionary_with_contacts)
 ```
 
-Next we will discuss `if` statements to leverage our knowledge of Booleans. u
+## Methods that Produce Booleans
+
+Recall that objects in Python may have *methods*, which are functions
+we can call directly on an object. Implicitly, the methods take the
+object that we call the method on as an input. For example, strings
+have an `upper()` method that produce a new string object, from the
+given one, whose letters are all uppercase.
+
+A Boolean method is one that produces a Boolean result. A common
+convention is for Boolean method name to begin with the letters
+*is*. To see this, start up the Python interpreter interactively:
+
+```text
+sgarciat@fx505gt:~/repos/Python-Tutorial$ python3
+Python 3.12.3 (main, Sep 11 2024, 14:17:37) [GCC 13.2.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>>
+```
+
+Recall that a string object has class `str`. We can directly query
+the class to check out what methods are available. Type `str.is`
+and press the `TAB` key twice. This is a way to ask the interpreter
+to either autocomplete for us, or to give us suggestions if more
+than one alternative is possible. I see the following when I do this:
+
+```text
+sgarciat@fx505gt:~/repos/Python-Tutorial$ python3
+Python 3.12.3 (main, Sep 11 2024, 14:17:37) [GCC 13.2.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> str.is
+str.isalnum(  str.isascii(       str.isdigit(       str.islower(       str.isprintable(  str.istitle(
+str.isalpha(  str.isdecimal(     str.isidentifier(  str.isnumeric(     str.isspace(      str.isupper(
+>>> str.is
+```
+
+As you can see, there's a lot of options for method names, all beginning with
+the word `is`. We can get help on any one of them. For example, we can
+type `help(str.isdigit)` to learn about the `isdigit()` string method:
+
+```text
+>>> help(str.isdigit)
+```
+
+In my screen I see
+
+```text
+Help on method_descriptor:
+
+isdigit(self, /) unbound builtins.str method
+    Return True if the string is a digit string, False otherwise.
+
+    A string is a digit string if all characters in the string are digits and there
+    is at least one character in the string.
+(END)
+```
+
+As you can see, the method returns `True` or `False`. The docstring also explains
+what is considered a digit string. While you can do a web search whenever
+you are not sure about what something does, using the built-in `help()` command
+can be a great way to self-serve.
+
+Add the following to your script
+
+```python
+# False: spaces don't count as digits
+print("   12345 ".isdigit())
+# True: strip() removes the leading and trailing spaces
+print("   12345 ".strip().isdigit())
+# False: The fractional dot . is not a digit
+print("3.14".isdigit())
+```
+
+Check out how we chained two method calls
+
+## Non-Booleans in a Boolean Context
+
+Later on, we will encounter situations where we are using an expression that
+is not a Boolean in a "Boolean context". For example, we may use a number
+or a string as the condition expression for an `if` statement.
+
+One way to see the truth value of each of the following is to pass the
+value to the `bool()` built-in function, which accepts any input and
+converts it to a Boolean. Add the following to your script:
+
+```python
+# All of these evaluate to False
+print(bool(False))
+print(bool(None))
+print(bool(0))
+print(bool(""))     # empty string
+print(bool(()))     # empty tuple
+print(bool([]))     # empty list
+print(bool({}) )    # empty set (or dictionary)
+```
+
+This will become more relevant later, but it is mentioned here for completeness.
+
+## Looking ahead
+
+Next we will discuss `if` statements to leverage our knowledge of Booleans.

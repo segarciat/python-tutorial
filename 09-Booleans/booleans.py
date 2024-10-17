@@ -77,3 +77,19 @@ print(0 not in tuple_of_coordinates)
 
 # True: "sergio" is a key in the dictionary
 print("sergio" in dictionary_with_contacts)
+
+# False: spaces don't count as digits
+print("   12345 ".isdigit())
+# True: strip() removes the leading and trailing spaces
+print("   12345 ".strip().isdigit())
+# False: The fractional dot . is not a digit
+print("3.14".isdigit())
+
+# All of these evaluate to False
+print(bool(False))
+print(bool(None))
+print(bool(0))
+print(bool(""))     # empty string
+print(bool(()))    # empty tuple
+print(bool([]))     # empty list
+print(bool({}) )    # empty set (or dictionary)

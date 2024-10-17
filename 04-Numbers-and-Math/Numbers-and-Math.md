@@ -35,6 +35,8 @@ data type while doing numerical calculations. We will not delve deeper
 into the issues related to these data types, but being aware of them
 can help when the answers you get differ from what you would expect.
 
+See [Floating-Point Arithmetic: Issues and Limitations](https://docs.python.org/3/tutorial/floatingpoint.html) on the official Python documentation.
+
 ## Numeric Literals
 
 A *number literal* is text that appears explicitly in our Python script
@@ -345,9 +347,8 @@ print(random.uniform(1.0, 4.5))
 
 We will talk about variables next.
 
-```
-
 ## References
 
 - [Built-in Functions in Python](https://docs.python.org/3/library/functions.html#round).
 - [Mathematical Functions in Python](https://docs.python.org/3/library/math.html).
+- [Floating-Point Arithmetic: Issues and Limitations](https://docs.python.org/3/tutorial/floatingpoint.html)
