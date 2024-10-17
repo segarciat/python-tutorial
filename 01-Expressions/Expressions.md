@@ -22,8 +22,8 @@ Type "help", "copyright", "credits" or "license" for more information.
 ```
 
 Recall that `>>>` is the Python prompt, which you can see when running
-Python interactively through the REPL. Type the following, each on its
-own line (by pressing) `enter`:
+Python interactively. For each of the following lines, type the expression
+and press `ENTER` to run the command:
 
 ```python
 0
@@ -66,12 +66,15 @@ False
 
 Python interprets each line and evaluates it. The REPL displays each value
 onto the screen. In computer programming, another word for *displaying* content
-out to the screen (also  known as displaying output) is called *printing*.
+as *output* on the screen, also known as *printing*.
 
-Outside the REPL, Python will still evaluate each line, but it will not display
-the value unless it is explicitly told to. To see this, let's create a Python
-script by using the `code` command in `bash`, which should be available now that
-we have installed Visual Studio Code:
+If we include the same code in a Python script (a text file with Python code),
+and use the `python` command to evaluate the file, Python will still evaluate
+each line. However, unlike the REPL, Python will not display the value unless it
+is explicitly told to.
+
+To see this, let's create a Python script by using the `code` command in `bash`,
+which should be available now that we have installed Visual Studio Code:
 
 ```bash
 code expressions.py
@@ -93,14 +96,15 @@ False
 [5, 7, 0, -2, 23]
 ```
 
-Now using Python to execute the code in the script by either using the button that
-says `Run Python File` in VS Code, or by issuing the following command to your shell
-via your terminal:
+To have `python` interpret your script, you can either click on the "Play" button
+on the top-right in Visual Studio Code, which says `Run Python File`, or you can
+issue the `python` command and provide it the filename as an argument on your shell,
+like so:
 
 ```bash
 python expressions.py
 ```
 
-You will see no output whatsoever. Python did evaluate the commands, but it did not
-display any output. Next, we will learn how to use the `print()` function to display
-the value of expressions.
+You will see no output whatsoever. Remember, Python did evaluate the commands. However,
+it did not display their values because we did not ask Python to do so.
+Next, we will learn how to use the `print()` function to display the value of expressions.

@@ -7,7 +7,10 @@ involving their values. For example, Python distinguishes between integers, frac
 complex numbers, text, lists of items, and more. We will explore these all in due time.
 
 Python provides the built-in function, `type()` which accepts an expression
-as its argument displays its 'class', which is its data type.
+as its argument, and produces its *class*, which is its *data type*, as its
+output. We can provide the output of `type()` as an input to `print()`
+to see the class of different expressions (this is like function composition
+in algebra).
 
 Create a script called `data_types.py`:
 
@@ -45,7 +48,20 @@ You will see:
 <class 'list'>
 ```
 
-In short:
+Let's consider how Python handled `print(type(0))`:
+
+1. Python sees `print()` and its argument is `type(0)`, so it begins
+by evaluating the argument `type(0)`.
+
+2. Python notes that `type()` is a built-in function with `0` as an argument,
+and it invokes that function to produce the type of `0` as a result.
+The evaluation of `type(0)` is now complete.
+
+3. Python provides the value  of `type(0)` as an input to `print()`,
+which in turn displays the output to the screen. Thus we see
+`<class 'int'>`.
+
+Let's briefly go through the types:
 
 - `int` repersents an integer, a number with no fractional part which may be
 positive, negative, or zero.

@@ -431,3 +431,39 @@ by the expression `(x + y) / 2`. The result will be available
 to whoever called `average()`. For example, they can choose
 to store it in a variable, like we did, or use it in another
 expression directly.
+
+## The `autoDocstring` extension in VS code
+
+A Visual Studio Code extension named `autoDocstring` is available
+for Python to simplify the work of writing docstrings.
+
+After installing it, try it out by writing a function such as:
+
+```python
+def discriminant(a, b, c):
+    return pow(b, 2) - 4 * a * c
+```
+
+Then, place your cursor after the colon `:` on the function
+definition line, press `ENTER`, type three double quote characters
+`"""` as if to open a docstring, and press `ENTER`. The `autoDocstring`
+extension will automatically generate a template for you to fill in,
+like the following:
+
+```python
+def discriminant(a, b, c):
+    """_summary_
+
+    Args:
+        a (_type_): _description_
+        b (_type_): _description_
+        c (_type_): _description_
+
+    Returns:
+        _type_: _description_
+    """
+    return pow(b, 2) - 4 * a * c
+```
+
+This should help you get in the habit of writing docstrings to
+document what your functions do.

@@ -1,9 +1,8 @@
 # 8. The `python` command
 
-Now that we have installed Python, we can use the `python` command, and we can begin
-learning Python in earnest. We will begin by learning how to use the Python REPL to
-run simple commands and learn the basics. Later, we will run Python by storing Python
-in a file.
+In this section we will explore how to use the `python` command to run the Python
+interpreter interactively. Later on, we will use the `python` command to interpret
+code in source files.
 
 ## The `python` Command
 
@@ -35,18 +34,19 @@ This displays the Pythom version, such as:
 Python 3.12.5
 ```
 
-Recall that command-line programs often provide a default behavior, and may also accept command-line arguments or options that change that default behavior. The `python` command
-is no different.
+Recall that command-line programs often provide a default behavior, and
+may also accept command-line arguments or options that change that default
+behavior. The `python` command is no different.
 
-## The Python REPL
+## Running Python Interactively: The Python REPL
 
-If you run Python with no arguments, like so:
+If you run `python` with no arguments, like so:
 
 ```bash
 python
 ```
 
-Then, you will be presented a prompt similar to this:
+Then, you will be presented with a welcome message and a *prompt*, similar to this:
 
 ```text
 Python 3.12.4 (main, Jun  8 2024, 18:29:57) [GCC 11.4.0] on linux
@@ -54,23 +54,34 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>>
 ```
 
-The `>>>` is a *prompt*, which is how Python indicates that it's waiting for you to provide
-it input. This environment is called the **Python REPL**, which stands for
-*Read-Evaluate-Print-Loop*. It's named this way because Python will read your command,
-will evaluate it to determine whether it's valid before attempting to run it, will display
-the result, and then starts all over again (loop).
+Note that we no longer see the `bash` shell prompt (the `%` or `$`) because the
+shell has transferred control over to `python`. Now instead we see `>>>`, which
+is the Python prompt. Now it is Python (and not the shell) that pauses and
+waits for us to provide input.
 
-The `python` program is sometimes synonymously referred to as the **python interpreter**,
-because it interprets text you enter as commands (or code) to execute (run). This should
-remind you of your shell, which does the same:
+The environment we are in is sometimes called the **Read-Evaluate-Print-Loop**
+or **REPL** for short, for the following reason:
 
-1. **Read**: Waits for you to type a command. Typically a prompt such as `>>>` is shown by Python, or `$` for a shell, or something else depending on the interpreter.
-2. **Evaluate**: Evaluates the command you type to make sure it is valid, and runs it.
-3. **Print**: Displays the result of running the command.
-4. **Loop**: Start over.
+1. **Read**: Python display a prompt such as `>>>` and pauses until you provide
+a line of text and submit it with `ENTER`.
+2. **Evaluate**: Python *parses* the line of text in order to determine if it
+is valid Python syntax that it can therefore execute. If valid, it evaluates
+the text as a Python command, possibly producing a value.
+3. **Print**: Having completed its computation, Python may display a value,
+such as the result of an expression or an error message.
+4. **Loop**: The process starts all over. Python goes back to the beginning
+step, and continues this way indefinitely (or until explicitly asked to stop).
 
-The difference is your shell interprets *shell commands* and Python interprets
-*Python commands*. Therefore, using the `echo` command, for example, will not work:
+This is not the first time you encounter a REPL: this is precisely what shells such
+as `bash` do. Programs such as `bash` and `python` as often referred to as
+*interpreters* because they evaluate a line of text at a time and immediately
+execute it (as opposed to languages like *C* for which we must go through
+a preliminary step known as *compiling*). As a result, the `python` program
+is sometimes referred to as the **python interpreter**.
+
+In spite of the similiarities, please keep in mind that `python` can only interpret
+Python commands, and `bash` can only interpret Bash commands. For example,
+here is what happens if you try to run the `bash` command `echo`:
 
 ```text
 >>> echo "Hello world"
@@ -80,47 +91,51 @@ The difference is your shell interprets *shell commands* and Python interprets
 SyntaxError: invalid syntax
 ```
 
-On the other hand, whereas `echo "hello world"` displays text while in your shell,
-the following does the same in Python:
+The `python` interpreter determined that `echo` is invalid and displayed an error
+message to inform us. In Python, the way we produce text on the screen is with
+the built-in `print()` function, like so:
 
 ```text
 >>> print("hello world")
 hello world
 ```
 
-The difference is that `echo` is a shell command, whereas `print()` is a Python
-command (or function). The parentheses are necessary, because `print` is a *function*,
-and in Python we use parentheses `()` to execute a function.
+If you tried `print()` in `bash`, you would likely see an error as well,
+because it is a Python command, not a `bash` command.
 
 ### Quitting the Python REPL
 
-The first thing we should learn is how to exit. We can do so in a few ways:
+Recall that the L in REPL means to loop. How do we exit the loop? There's a few ways:
 
-- Type the key combination `Control-D`: This produces a special character called **EOF** or **End-of-file**. This tells Python that you will no longer provide any input, and causes it to quit.
+- Type the key combination `Control-D`: This produces a special character called **EOF**
+or **End-of-file**. This tells Python that you will no longer provide any input, and
+causes it to quit.
 
-- Run the `exit()` command (similar to above).
+- Type `exit()` and press `ENTER`, which executes the built-in Python `exit()` command,
+thereby quitting the `python` interpreter.
 
-- Run the `quit()` function (include the parentheses, and no spaces).
+- Run the `quit()` function, similar to above.
 
-Any of these will exit Python and return you to your regular shell prompt, where now it is your
-shell, and not Python, that waits for a command.
+Any of these will exit `python`, returning control to your `bash` shell. You will
+no longer see the `>>>` prompt and will instead see yur regular shell prompt.
 
-For more details, see [Using the Python interpreter](https://docs.python.org/3/tutorial/interpreter.html) in the official Python tutorial.
+For more details, see [Using the Python interpreter](https://docs.python.org/3/tutorial/interpreter.html)
+in the official Python tutorial.
 
 ## Python Scripts
 
 In computer programming, a **script** is a text file containing a sequence of commands written
 in an interpreted language such as Python or Bash. To execute the commands in the file, we use a
-special program called an **interpreter**. There are many different computer languages with
-corresponding interpreters:
+special program called an **interpreter**, which executes each line one at a time. There are
+many different computer languages with corresponding interpreters:
 
 - Bash scripting and the `bash` interpreter
 - JavaScript and the `node` interpreter (for NodeJS)
 - Python and the `python` intepreter
 
 Conventionally, a file meant to be interpreted by a specific program has a name and an extension that
-indicates what type of script it is. For example, the `.py` extension is used to indicate a text file
-is a Python script. The term **scripting** often refers to writing computer code in an interpreted
+indicates what type of script it is. For example, the `.py` extension is used to indicate that a text
+file is a Python script. The term **scripting** often refers to writing computer code in an interpreted
 language, such as Python.
 
 ### Creating a Python Script
@@ -133,8 +148,8 @@ touch hello_world.py
 
 The `touch` command updates the timestamp of a file, or creates the named file if it does not
 already exist. Here, we chose the name `hello_world.py`. Notice that it has all lower case letters,
-with an underscore `_` to separate the words, and the `.py` extension. Now open the file for
-editing:
+with an underscore `_` to separate the words, and the `.py` extension; this is standard, as we will
+soon see. Now open the file with the `bash` command `open`:
 
 ```bash
 open hello_world.py
@@ -160,18 +175,21 @@ Hello, world!
 ```
 
 Running `python` with `hello_world.py` as an argument instructs the Python interpreter
-to interpret the commands in the text file, effectively running your code.
+to interpret the commands in the text file a line at a time, effectively running
+the code in it.
 
 ## Python REPL vs. Scripting
 
 The REPL is useful when we wish to use Python interactively to learn the basics, try out
-a Python feature, or run simple experiments. The downside is that if we exit the REPL and
-come back, our work is lost, and typing Python code can be inconvenient.
+Python features, or run simple experiments. The downside is that if we exit the REPL and
+come back, our work is lost. Moreover, typing Python code can be inconvenient for
+complicated expressions.
 
-The bulk of a programmer's time is spent scripting, meaning writing Python code in a text file.
-It's beneficial because you can save your code, modify it easily, and share it with others.
-Also, there are many programs, such as *text editors* and *integrated development environments*
-that enhance our programming workflow when we use text files to write code.
+The bulk of a programmer's time is spent scripting (and debugging), meaning writing
+Python code in a text file. It's beneficial because you can save your code, modify it
+easily, and share it with others. Also, there are many programs, such as *code editors*
+and *integrated development environments* that enhance our programming workflow when we
+use text files to write code.
 
 To get a taste of Python from the REPL, see [An Informal Introduction to Python](https://docs.python.org/3/tutorial/introduction.html) on the official Python documentation.
 

@@ -24,10 +24,9 @@ different representations for different types of numbers. For example,
 integers, which are numbers with no fractional part (which may be
 positive or negative), can be represented exactly, but typically there
 is a limit on the largest integer that can be represented.
-On the other hand, typical representations of number with fractional
-parts cannot have represented exactly because the finite limitation on memory
-means that numbers with infinitely-many digits after the decimal point
-cannot all be stored in memory.
+On the other hand, numbers with fractional parts cannot have represented
+exactly because the finite limitation on memory means that numbers with
+infinitely-many digits after the decimal point cannot all be stored in memory.
 
 Python provides the `int` data type for integers, and the `float`
 data type for numbers with fractional parts. You will certainly
@@ -41,15 +40,34 @@ can help when the answers you get differ from what you would expect.
 A *number literal* is text that appears explicitly in our Python script
 such as `0` or `5.2`, and which in turn evaluates to a number. This is
 as opposed to numbers that are produced as the results of computations,
-but which do not appear explicitly in our Python script. We will meet
-literals for other data types in due time.
+but which do not appear explicitly in our Python script.
+
+Here are examples of literals; add them to your script:
+
+```python
+# int literals: the - is used for negative numbers
+print(0)
+print(5)
+print(-7)
+
+# Use underscores for large numbers
+print(3_123_459_789)
+
+# float literals, use dots for fractional parts
+print(3.14)
+# scientific notation
+print(1.7e-2)
+
+# complex number literal
+print(3-4.5j)
+```
 
 ## Arithmetic Operations
 
 Python supports many familiar operations through specific symbols:
 
 - `x + y`: The sum of `x` and `y`.
-- `x - y`: The different of `x` and `y`.
+- `x - y`: The difference of `x` and `y`.
 - `x * y`: The product of `x` and `y`.
 - `x / y`: The quotient of `x` and y`.
 - `x ** y`: `x` to the power of `y`.
@@ -60,9 +78,9 @@ Mathematically this yields an integer, but depending on `x` and `y`, it may be a
 into `x`, and taking out those `y`'s from `x`. What remains is `x % y`.
 - `x * (y + z)`: Parentheses used for precedence; think PEMDAS from high school algebra.
 Normally multiplication has higher precedence than addition, but here we do `y + z` before
-multiplying by `x`.
+multiplying by `x` because of the parentheses.
 
-Type the following:
+Type the following in your script:
 
 ```python
 # Add
@@ -112,30 +130,20 @@ print(type(25 // 7))
 
 ## Built-In Functions for Math
 
-Besides the operators we have seen, Python also provides some built-in functions
-for familiar computations:
+Python provides many built-in functions. For example we have seen the
+built-in `print()` and `type()` functions. The following built-in
+mathematical functions are also available:
 
-- `abs(x)`: Absolute value of `x`.
+- `abs(x)`: The absolute value of `x`.
 - `pow(x, y)`: `x` to the power of `y`. This is like `x ** y`.
-- `round(x, ndigits=k)`: Round the nubmer `x` to `k` digits after the decimal point.
-Alternatively, `round(x)` will round to the nearest integer.
+- `round(x)`: Rounds `x` to the nearest integer. We can also
+use the form `round(x, ndigits=k)` to round `x` to `k` digits
+after the decimal point. In this second form, `ndigits` is
+known as a *keyword-argument*, and we will return to this
+whne we discuss functions in the future.
 
-Remember that to call a function, you include the name, parentheses, and the
-arguments, possibly separated by commas. In this case of `round()`, the
-`ndigits` is something called a *keyword-argument*, which we will discuss
-later. The `ndigits` keyword argument is specific to `round()`, and
-though we will not discuss keyword-arguments right now, its usage
-is simple enough, so you are encouraged to use it.
-
-There are other built-in functions that are relevant to mathematical operations,
-such as
-
-- `sum()`: find the sum of a list of numbers,
-- `max()`: find the maximum value of a list of numbers,
-- `min()` to find the minimum value of a list of numbers, and others.
-
-We will discuss these when we talk about data types used to hold
-more than one value, such as `list`, `set`, and `tuple`.
+There are many built-in functions that can be used for mathematical
+computations, which we will discuss in due time.
 
 Add the following to your Python script to see these in action:
 
@@ -161,17 +169,18 @@ print(round(3.14159265, ndigits=4))
 
 ## The `math` module
 
-Python does not have a built-in for every operations. However,
-its functionality can be extended through *modules*. A **module**
-is a file containing Python definitions and statements. For our
-purposes, a module provides access to other symbols representing
+Python does not have a built-in function for every operation.
+However, Python is built to be extended. One way to extend Python
+is through modules, which are created by using core Python features.
+A **module** is a file containing Python definitions and statements.
+For our purposes, a module provides access to other symbols representing
 variables and functions.
 
-One useful module related to numerics is the `math` module.
-To use the functionality in a module, we must *import the module* by using
-the `import` statement together with the name of the module.
-A best practice is to place `import` statements at
-the very top of a Python script.
+Of immediate interest is the `math` module, which defines names for
+variables and functions that are commonly used. To use the functionality
+in a module, we must *import the module* by using the `import` statement
+together with the name of the module. A best practice is to place `import`
+statements at the very top of a Python script.
 
 Let's briefly start the REPL by running the `python` command in the terminal:
 
@@ -179,17 +188,29 @@ Let's briefly start the REPL by running the `python` command in the terminal:
 python
 ```
 
-Once it starts up add the following commands:
-
 ```text
 sgarciat@fx505gt:~/repos/Python-Tutorial$ python3
 Python 3.12.3 (main, Sep 11 2024, 14:17:37) [GCC 13.2.0] on linux
 Type "help", "copyright", "credits" or "license" for more information.
+>>>
+```
+
+Once it starts up add the following commands:
+
+```text
 >>> import math
+```
+
+This line imports the `math` module, making the functions
+and names in it accessible to us. To learn what's available, we can
+use the built-in `help()` function. As its argument, we will provide
+`math`, the name of the module we've just imported:
+
+```text
 >>> help(math)
 ```
 
-Here's a truncated version of the output on my system:
+Here's a truncated version of what I see in my system:
 
 ```text
 Help on built-in module math:
@@ -218,8 +239,10 @@ FUNCTIONS
 ```
 
 As you can see, Python provides many mathematical functions.
-To exit the paging view due to the built-in `help()` function,
-press `q`. Then exit the REPL by entering `exit()` built-in function:
+In this view, you can use your arrow keys to scroll up and down
+to explore what's available. To exit the paging view due to the
+built-in `help()` function, press `q`. Then exit the REPL by entering
+`exit()` built-in function:
 
 ```text
 sgarciat@fx505gt:~/repos/Python-Tutorial$ python3
@@ -232,23 +255,34 @@ Type "help", "copyright", "credits" or "license" for more information.
 sgarciat@fx505gt:~/repos/Python-Tutorial$
 ```
 
-To use a function in a module, such as `math`, such as `acos()`,
-we write the following:
+Create a new Python script `math_and_random_modules.py`:
 
-```text
-math.acos(0)
+```bash
+code math_and_random_modules.py
 ```
 
-There command has the following components:
+Add the following at the top of your script
 
-- We begin with the module name: `math`.
-- We append a dot `.` to the module name, like so: `math.`. The
-dot is known as the *dot operator*, and it is used to access names
-and attributes of an object. In this case, the object is the math
-module. We will see the dot operator in other contexts in the future.
-- We write the name of the symbol we wish to access. In this case,
-the symbol is the function `acos()`. Since the function expects an
-argument, I pass it `0` (which is in the domain of arc cosine).
+```python
+import math
+
+print(math.gcd(6, 14))
+```
+
+We begin with the import statement, `import math`. From here on,
+we can access anything it makes available by first adding the
+prefix `math.`. That is, the name of the module and a dot `.`.
+This use of the dot `.` is known as *dot notation*, and in some
+languages `.` is known as the *member access operator*, presumably
+because we are accessing members of the object (here the object
+would be the `math` module).
+
+For example, we wanted to use the `gcd()` function (which stands
+for greatest common divisor), so we wrote `math.gcd()`. This
+is a function call like any other, and it accepts integers as
+inputs (arguments), which here are `6` and `14`. This produces
+the value `2`, which `print()` accepts as its input and displays
+onto the screen.
 
 Now towards the end of the file, add the following lines:
 
@@ -278,7 +312,8 @@ print(math.nan)
 Notice the syntax is the same for all of these expressions. The last four,
 `math.e`, `math.pi`, `math.inf`, and `math.nan`, do not use parentheses
 because they are not functions. These are *variables*, the subject of
-our next section.
+our next section. This is not an exhaustive list of all that is available
+in the `math` module, but you can explore as the need arises.
 
 # The `random` module
 
@@ -300,28 +335,16 @@ import random
 Then add the following lines at the end of your script:
 
 ```python
+# Produce any integer between -55 and 100 with equal likelihood
 print(random.randint(-55, 100))
+# Produce any fraction between 0 and 1 with equal likelihood
 print(random.random())
+# Produce any fraction between 1.0 and 4.5 with equal likelihood
 print(random.uniform(1.0, 4.5))
 ```
 
 We will talk about variables next.
 
-## Special Values: infinity and NaN
-
-Python can represent infinity and negative infinity but there isn't a
-literal for it. Instead, we must use the `float()` function, like so:
-
-```python
-print(float('inf'))
-print(float('-inf'))
-```
-
-Similarly, Python has a special symbol for when something is not a number,
-which is typically refererd to as NaN:
-
-```python
-print(float('nan'))
 ```
 
 ## References

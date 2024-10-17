@@ -1,12 +1,15 @@
 # Variables
 
-A **variable** is a label (name) used to refer to a value. In Python,
-a valid variable adheres to the following rules:
+A **variable** is an identifier used to refer to an object which has a value.
+Sometimes variables are described as "boxes" containing a value, but
+this is not quite accurate, as they are more like labels.
+
+In Python, a valid variable identifier (name) adheres to the following rules:
 
 - It may consist of letters (uppercase or lowercase), numbers, and underscores.
 - It cannot not start with a number.
 
-The following are strongly recommended guidelines for variables names:
+In addition, the following are strongly recommended guidelines for variables names:
 
 - Use lowercase letters only (numbers are alright when appropriate).
 - If the variable name has multiple words, use an underscore `_` to
@@ -27,9 +30,8 @@ code variables.py
 
 ## Defining a Variable
 
-To define a variable, we pick a valid name, and then use the
-*assignment operator*, the `=` symbol, followed by a value we wish
-for our variable to represent.
+To define a variable, we pick a valid name, and then use the *assignment operator*,
+the `=` symbol, followed by a value we wish for our variable to represent.
 
 Type the following:
 
@@ -48,15 +50,15 @@ As you can see, this code defines two variables named `width` and `height`.
 When Python encounters the name `width` in an expression, it will replace
 it with the value `8`; similarly, when it encounters `height`, it will replace
 it with the value `15`. Notice the use of a single space on both sides of the
-equal sign when defining a variable. This is recommended convention to make code
-more readable.
+equal sign when defining a variable (before an after). This is recommended
+convention to make code more readable.
 
 As you can see, we can refer to the variables in other places to access their
 value and to perform computations. For example, we defined an `area` variable
 whose value is the result of multiplying the value of `width` and `height`.
 Similarly, we used the value of `width` and `height` to define a variable called
-`perimeter`. Also, we provided `area` and `perimeter` as arguments
-when calling the `print()` function.
+`perimeter`. Also, we provided `area` and `perimeter` as arguments when calling
+the `print()` function.
 
 If you run the script, you should see:
 
@@ -112,7 +114,8 @@ print(area)
 print(perimeter)
 ```
 
-This repetition is not great, but  later we will learn ways to mitigate this.
+This repetition is not great, but later we will learn about functions
+to improve this.
 
 ## Constants and "Magic Numbers"
 

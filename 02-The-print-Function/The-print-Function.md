@@ -6,32 +6,13 @@ our script and ran it, we did not see any output. In this section, we will
 explore the built-in `print()` function, whose job is to output values of
 expressions.
 
-In Python, a *function* is a named operation a well-defined interface and
-behavior that can be invoked multiple times. A function may accept inputs
-and perform an operation that may display output.
-
-It is similar to an *operator* such as the addition operator `+`, which takes
-inputs and produces outputs. For example, in `3 + 14`, the inputs as
-`3` and `14`, and the output is `17`, the result of the operation.
-We will talk more about functions later, but of immediate interest is the
-*print* function.
-
-The purpose of the *print* function is to display textual output, normally to
-a terminal screen, but possibly to a file. Going forward, I will add the
-parenthesis pair `()` as a suffix to functions, such as `print()`, because
-parentheses are used to *call* (to action) or *invoke* functions. This also
-helps to distinguish them from variable names, which we will discuss later.
-
-`print()` is a built-in function, meaning that it is provided with Python.
-We will encounter many other built-in and non built-in functions later.
-
-Create a Python script called `printing.py`:
+Begin by creating a file called `printing.py`:
 
 ```bash
 code printing.py
 ```
 
-Add the following code:
+Now add the following content:
 
 ```python
 print(0)
@@ -46,7 +27,13 @@ print(False)
 print([5, 7, 0, -2, 23])
 ```
 
-Now run it, and you will see:
+Run it with Visual Studio Code, or use the `python` command on your file:
+
+```bash
+python printing.py
+```
+
+You should see:
 
 ```text
 0
@@ -61,20 +48,43 @@ False
 [5, 7, 0, -2, 23]
 ```
 
-Here, Python evaluated each expression inside the parentheses,
-passed the result to `print()`, and invoked `print()` to display
-the result.
+The output is equivalent to what we saw when we ran each line separately
+in the REPL. Let's discuss what happened:
 
-The function call `print(-52)` function has three components:
+1. When we ran `python printing.py`, Python noticed that we provided
+a filename. Therefore, it did not start the REPL environment.
+
+2. The `python` interpreter opened `printing.py` and began at the first
+line, containing `print(0)`, and began interpreting the text as Python
+code.
+
+3. Python recognized `print()` as an invocation of a built-in function
+that displays output. It sees the `0` inside the parentheses, and
+it determines it must output `0` on the screen.
+
+4. Python moves on to the next line and repeats the process.
+
+## What is a function?
+
+Simply, a *function* is a named computation encapsulates a
+useful computation that can be reused. Functions often accept
+inputs and produce outputs. This should remind you of functions
+in mathematics, such as a polynomial $f(x)=x^2$ which, given
+an input value $x$, it produces the its square $x^2$.
+
+For concreteness, consider the line with `print(1 + 17)`.
+This is how we tell Python that we wish to use the function,
+and it consists of the following parts:
 
 - The name of the function, which is `print`.
 - A balanced set of parentheses `()`, which is used to signify that we
 are *calling* or *invoking* the *print* function. There must not be
 a space between the function name (`print`) and the parentheses `()`.
-That is, we should write `print()`,  not `print ()`.
-- An *argument* inside the parentheses. The argument is an expression,
-and is what `print()` will display to the screen. In the example above,
-we used many different expressions. For example, `-52` is an argument.
+That is, we must write `print()`,  not `print ()`.
+- An *argument* inside the parentheses, here `1 + 17`. Note `print()`
+does not evaluate the computation `1 + 17` as `18`. Rather, Python
+does this on behalf of `print()`, gives the result to `print()`,
+and then `print()` displays `18` to the screen.
 
 As you can see, the `print()` function in Python is similar to the `echo`
 command provided by your shell, but please note that `echo` is not
@@ -82,10 +92,9 @@ directly accessible within a Python program, and `print()` is not
 directly accessible from the shell.
 
 Like many other functions, `print()` accepts more than one argument, or
-even no arguments at all!
-If given no argument, `print()` will output a blank
-line. To give it more than one argument, separate each one by a comma. To try it,
-add the following lines to the end of `printing.py`:
+even no arguments at all! If given no argument, `print()` will output
+a blank line. To give it more than one argument, separate each one by a
+comma. To try it, add the following lines to the end of `printing.py`:
 
 ```python
 # One argument: displays its value and ends with a newline
@@ -109,6 +118,16 @@ of each argument is displayed on the screen, and they separated by one space fro
 one another (by default).
 
 We will return to the `print()` command throughout our study.
+
+## Comments
+
+You may have noticed lines that begin with `#` in the previous example. In Python,
+lines that begin with `#` are known as **comments**. Python ignores comments,
+meaning that it will not attempt to interpret them as code, thereby allowing you
+to type whatever you want. Comments are useful when you wish to explain your
+thought process, or to plan out how you will approach the problem you are trying
+to solve. In this tutorial, I will liberally use comments to explain what
+certain lines of codes do.
 
 ## References
 
