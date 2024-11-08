@@ -64,55 +64,132 @@ we provide is not a number, the program will terminate with an error
 in the future.
 
 With this, we can write a useful interactive program. For example,
-we can use the `math.gcd()` function to compute the greatest common
-divisor of two positive integers provided by the user. Create a Python
-script called `mygcd.py`:
+the equation $I = Prt$ is called the **simple interest** formula.
+Given a principle amount $P$, an interest rate $r$ as a number
+between 0 and 1, and a value $t$ for the number of time periods,
+we can calculate $I$, the interest accrued during that period.
+We will write a program that computes this quantity for a user.
+
+Create a Python script called `simple_interest.py`:
 
 ```bash
-code mygcd.py
+code simple_interest.py
 ```
 
-Enter the following:
+First, we will welcome the user, and explain what the program
+will entail:
 
 ```python
-import math
+print("""
+    Welcome to my Simple Interest program!
 
-print("Welcome to my greatest common divisor program")
-
-m_input = input("Enter a positive integer: ")
-n_input = input("Enter another positive integer: ")
-
-m = int(m_input)
-n = int(n_input)
-
-print(f"The greast common divisor of {m=} and {n=} is {math.gcd(m, n)}")
+Please follow the instructions and I will do the interest
+computation for you.
+""")
 ```
 
+Next, we will need to prompt the user for inputs:
+
+```python
+principal_input = input("Enter the principal to the nearest dollar: ")
+interest_rate_input = input("Enter the yearly interest rate as a percent (1 to 100): ")
+number_of_periods_input = input("Enter the number of periods in years: ")
+```
+
+Since `input()` produces a string, which has type `str`, it follows that
+all three variables above are of type `str`. We need to convert them
+to number types so that we can perform arithmetic:
+
+```python
+# Convert data from str to appropriate number type
+principal = float(principal_input)
+yearly_rate = float(interest_rate_input)
+years = float(number_of_periods_input)
+```
+
+We need to do this so that we can multiply the quantities.
+Next, we will do the calculation, and display the result:
+
+```python
+# Compute and display the result
+interest = round(principal) * (yearly_rate / 100) * years
+print(f"According to our simple interest rate formula, the interest amout is ${interest:.2f}")
+```
+
+The computation itself is very simple. Note that we use the
+`round()` function, in case the user did not enter an amount
+to the nearest dollar as we asked. Also, though we expect a user
+to provide a percentage, our formula actually uses its equivalent
+version as a number between 0 and 1, so we divided the interest
+rate by 100.
+
+We used a format string to display a complete sentence so the user
+has some context on what we did. Notice the funny notation `{interest:.2f}`.
+This is special formatting supported by f-strings:
+
+1. We write a colon `:` in the braces `{}` of an f-string.
+2. To the left of the colon, we have the expression we want to display
+(in this case, the value of the `interest` variable).
+3. To the right of the colon, we have `.2f`, which means
+"display this float with 2 digits after the decimal".
+
+See [more format examples](https://docs.python.org/3/library/string.html#format-examples)
+in the Python documentation. I've only mentioned it to pique your
+curiosity, but there's no need to worry about it much otherwise for now.
+
+Below is a sample run of the program:
+
+```
+
+    Welcome to my Simple Interest program!
+
+Please follow the instructions and I will do the interest
+computation for you.
+
+Enter the principal to the nearest dollar: 10000
+Enter the yearly interest rate as a percent (1 to 100): 0.5
+Enter the number of periods in years: 3
+According to our simple interest rate formula, the interest amout is $150.00
+```
+
+## Caution with User Input
+
 Notice that the user may not enter a number, causing your program to
-have an error because `int()` will fail to convert it to a number.
+have an error because `float()` will fail to convert it to a number.
 This might be by mistake or on purpose. For example, the user might
-enter `4.0`, which our program cannot handle with `int()` (it would
-need `float()`).
+enter `five` instead of `5`, which would not work because `input()`
+would produce the string `"five"`, which cannot be converted to
+a `float` by `float()`. The conversion is necessary because we
+we cannot multiply strings together; we multiply numbers!
 
-Notice that we have two variables, `m_input` and `m`. The difference
-is that `m_input` is the string provided by the user, which has type
-`str`, and `m` is the `int` value we got from *parsing* `m_input`
-with the `int()` function. Had we passed `m_input` and `n_input`
-directly to `math.gcd()`, our program would error out.
+Notice also that we used one variable for the input from the user
+and one for the result after conversion. To be concrete, `number_of_periods_input`
+is a `str`, the result of `input()`, which contains what the user
+typed. Meanwhile, `years` is a `float`. We say that we *convert*
+the from a `str` to a `float` in this case. Keep in mind, though,
+that the `number_of_periods_input` variable is still a label for
+a `str` object, so the underlying object it is a label for does
+not change, nor does `number_of_periods_input` suddenly become
+a label for a different object. Rather, the desired value of the
+desired type is produced, and we saved a reference to it in
+the `years` variable.
 
-There are ways to re-write the program to eliminate the `m_input`
+There are ways to re-write the program to eliminate the intermediate
 variable, such as by *nesting* the `int()` and `input()` function calls
 as follows:
 
 ```python
-m = int(input("Enter a positive integer: "))
+years = float(input("Enter the number of periods in years: "))
 ```
 
 In this case, the output of `input()`, which is a string, is immediately
 passed as an input argument to `int()`. Therefore, if the user entered
-a valid integer, there will not be an error, and `m` will be an `int`
+a valid number, there will not be an error, and `years` will be a `float`
 representing the number the user entered. This option might seem
-appealing, but you cautioned against it.
+appealing, but you are cautioned against it. For example, this precludes
+verifying that the user entered something valid. This is why we
+have chosen to apply some of the computations, such as rounding or
+dividing by 100, after-the-fact.
 
 In general, you should never trust your user's input, because your user
 may make a mistake, or they may maliciously enter an invalid value.

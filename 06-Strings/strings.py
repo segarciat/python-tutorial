@@ -28,6 +28,16 @@ width = 8
 height = 15
 area = width * height
 
+friend_name = "Patrick"
+print(f"Hi, {friend_name}!")
+
+# String concatenation: Chains strings together, creating a new string
+fancy_friend_name = "That's Mr. " + friend_name + " to you. :)"
+print(fancy_friend_name)
+
+# The old strings are unaltered
+print(f"No, I'll just call you {friend_name}")
+
 # Create a message using a format string.
 print(f"A rectangle of width {width} and height {height} has area {area}.")
 

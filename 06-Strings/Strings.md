@@ -194,6 +194,38 @@ This will display:
 A rectangle of width=8 and height=15 has area=120.
 ```
 
+## String Concatenation
+
+Recall that the data type of an object determines the valid operations
+involving that object. For example, though we can divide two `int`
+or two `float` values, we cannot divide strings.
+
+Perhaps surprisingly, the `+` operator can be applied to strings.
+That is, if `s` and `t` are objects of type `str`, then `s + t`
+is valid syntax, and it is an object of type `str`, too! This
+is called **string concatenation**. The word catenate means to
+connect, explaining the name.
+
+Add the following:
+
+```python
+friend_name = "Patrick"
+print(f"Hi, {friend_name}!")
+
+# String concatenation: Chains strings together, creating a new string
+fancy_friend_name = "That's Mr. " + friend_name + " to you. :)"
+print(fancy_friend_name)
+
+# The old strings are unaltered
+print(f"No, I'll just call you {friend_name}")
+```
+
+Notice that `friend_name` is unchanged after the concatenation using
+the `+` operator. Rather, the `+` operator produces a new string,
+independent of the operand strings used to create it. This is
+similar to numbers: if `x` and `y` are integers, and `z = x + y`,
+then the value of `x` does not change in order to compute `z`.
+
 ## String Methods
 
 In Python, a *method* is a function that can be invoked by using

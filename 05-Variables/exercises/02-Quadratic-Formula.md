@@ -1,16 +1,6 @@
-# 1. Practice: Math Expressions
+# 2. Practice: The Quadratic Formula
 
-Create a Python script called `math_expressions.py`. In it, do the following:
-
-- Create a variable called `pi` with a value of `3.14`.
-- Create a variable called `radius` set to `5`.
-- Create a variable called `circumference` whose value is the circumference
-a circle whose radius has the value of the `radius` variable.
-- Create a variable called `circle_area` whose value is the area of a circle
-whose radius has the value of the `radius` variable.
-- Print the  values of `circumference` and `circle_area`.
-
-Next, do the following:
+Create a Python script called `quadratic_formula.py`. In it, do the following:
 
 - Create variables `a`, `b`, and `c` with values `1`, `7`, and `10`.
 These represent the coefficients of a quadratic polynomial.

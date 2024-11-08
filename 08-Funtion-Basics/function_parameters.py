@@ -8,3 +8,7 @@ def greet(username):
 
 user_input = input("Please enter your name: ")
 greet(user_input)
+
+username = 5
+greet("lila")
+print(username)

@@ -40,7 +40,9 @@ See [Floating-Point Arithmetic: Issues and Limitations](https://docs.python.org/
 ## Numeric Literals
 
 A *number literal* is text that appears explicitly in our Python script
-such as `0` or `5.2`, and which in turn evaluates to a number. This is
+such as `0` or `5.2`, and which in turn evaluates to a number. In his
+book *Modern C23*, Gustedt also refers to literals as "unnamed temporary
+objects" in Section 5.6, which is also a good way to describe them. This is
 as opposed to numbers that are produced as the results of computations,
 but which do not appear explicitly in our Python script.
 
